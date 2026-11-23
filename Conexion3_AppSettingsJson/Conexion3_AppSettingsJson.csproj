@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Exe (y no WinExe): además del formulario se abre una CONSOLA,
+         donde el programa imprime mensajes con Console.WriteLine. -->
+    <OutputType>Exe</OutputType>
+    <!-- .NET 8 para Windows -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <!-- Proyecto de Windows Forms -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>Conexion3_AppSettingsJson</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Librería oficial de Microsoft para conectarse a SQL Server -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.2" />
+    <!-- Para leer appsettings.json -->
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- El formulario: código (FormPrincipal.cs) y diseño (FormPrincipal.Designer.cs) -->
+    <Compile Update="FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Copia appsettings.json a la carpeta del programa al compilar (si no, no lo encuentra) -->
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
